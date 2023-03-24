@@ -1,0 +1,67 @@
+{
+  "id": "5bef7710-ae34-468f-990b-fe891712ea9c",
+  "version": "2.0",
+  "name": "Automation_AidForAids",
+  "url": "https://aidforaids.org",
+  "tests": [{
+    "id": "3481766e-6fb8-4d12-8d74-34d9d85c3892",
+    "name": "CaseTest_AidForAids",
+    "commands": [{
+      "id": "fe6b4d8c-9dcd-48a0-a2f4-9c8d76e76dd6",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cba767cd-d6c5-4b73-b4b2-f30b72bc04d5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1488x649",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3f33a26-e303-4ddb-9e2e-ce5c149de757",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=Who we are",
+      "targets": [],
+      "value": "30000"
+    }, {
+      "id": "c1a51616-e4e9-4861-892e-020249dba6c5",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#primary-menu > .menu-item-454 .menu-text",
+      "targets": [],
+      "value": "Who we are"
+    }, {
+      "id": "94c02d2e-5ae3-4b91-93de-7045520a3ab1",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#primary-menu > .menu-item-453 .menu-text",
+      "targets": [],
+      "value": "What we do"
+    }, {
+      "id": "2355b67f-56fb-4384-a8ea-fcb6c15c28a7",
+      "comment": "",
+      "command": "click",
+      "target": "css=#primary-menu > .menu-item-450 .menu-text",
+      "targets": [
+        ["css=.show-mega-menu-content > a .menu-text", "css:finder"],
+        ["xpath=//ul[@id='primary-menu']/li[5]/a/span/span", "xpath:idRelative"],
+        ["xpath=//header/ul/li[5]/a/span/span", "xpath:position"]
+      ],
+      "value": "Get involved"
+    }]
+  }],
+  "suites": [{
+    "id": "eeb1db1c-8319-4e4e-9fd1-722a0ba3eb74",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["3481766e-6fb8-4d12-8d74-34d9d85c3892"]
+  }],
+  "urls": ["https://aidforaids.org/"],
+  "plugins": []
+}

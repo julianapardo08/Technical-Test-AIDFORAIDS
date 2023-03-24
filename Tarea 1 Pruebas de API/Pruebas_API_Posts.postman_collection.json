@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "d658db8a-d301-4dba-bdc9-b35a763ac803",
+		"name": "Pruebas_API_Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21670168"
+	},
+	"item": [
+		{
+			"name": "User_Random",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    const cantidad = jsonData.length;\r",
+							"    const id = Math.floor((Math.random()*cantidad)+2)\r",
+							"\r",
+							"    pm.globals.set(\"id\", id);\r",
+							"     \r",
+							"    console.log(\"El email del id \" + id + \" es \" + jsonData[id].email)\r",
+							"    pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API Posts}}users/",
+					"host": [
+						"{{API Posts}}users"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Posts_Users_Random",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    const cantidad = jsonData.length;\r",
+							"    const id = Math.floor((Math.random()*cantidad)+2)\r",
+							"\r",
+							"    pm.globals.set(\"id\", id);\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API Posts}}posts?userId={{id}}",
+					"host": [
+						"{{API Posts}}posts"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "{{id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 1,\r\n    \"title\": \"Test Post\",\r\n    \"body\": \"This is a post\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API Posts}}posts",
+					"host": [
+						"{{API Posts}}posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
